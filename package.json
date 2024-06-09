@@ -1,12 +1,17 @@
 {
   "name": "discordrpg",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && npm run deploy",
+    "deploy": "cd out && node deploy-commands.js && cp -rf ../JSON JSON && node index.js && cd ..",
+    "build": "tsc"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Craft485",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.15.3"
+  }
 }
