@@ -28,17 +28,14 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, readyClient => {
-	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+	console.log(`Ready! Logged in as ${readyClient.user.tag}\nPresent in ${readyClient.guilds.cache.size} guilds`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const command = (interaction.client as Bot).commands.get(interaction.commandName);
 
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
+	if (!command) return console.error(`No command matching ${interaction.commandName} was found.`);
 
 	try {
 		await command.execute(interaction);
